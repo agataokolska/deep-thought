@@ -2,6 +2,7 @@ import React from 'react'
 import Form from './Form'
 
 import ListOfSetsOfQuestions from './ListOfSetsOfQuestions'
+import Container from './Container'
 
 class DisplaySetOfQuestions extends React.Component {
     state = {
@@ -43,15 +44,19 @@ class DisplaySetOfQuestions extends React.Component {
     render() {
         return (
             <div>
-                <Form
-                    onNewSetOfQuestionsChange={this.onNewSetOfQuestionsChange}
-                    addSetOfQuestions={this.addSetOfQuestions}
-                    setOfQuestionsName={this.state.setOfQuestionsName}
-                />
-                <ListOfSetsOfQuestions
-                    sets={this.state.sets}
-                    deleteSetOfQuestions={this.deleteSetOfQuestions}
-                />
+                <Container>
+                    <Form
+                        onNewSetOfQuestionsChange={this.onNewSetOfQuestionsChange}
+                        addSetOfQuestions={this.addSetOfQuestions}
+                        setOfQuestionsName={this.state.setOfQuestionsName}
+                    />
+                </Container>
+                <Container>
+                    <ListOfSetsOfQuestions
+                        sets={this.state.sets}
+                        deleteSetOfQuestions={this.deleteSetOfQuestions}
+                    />
+                </Container>
             </div>
         )
     }

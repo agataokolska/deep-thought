@@ -1,14 +1,13 @@
 import React from 'react'
+import { ListItem } from 'material-ui/List'
+import Delete from 'material-ui/svg-icons/action/delete'
 
 const SingleSetOfQuestions = (props) => (
     <div>
-        <button>
-            {props.name}
-        </button>
-        <button
-            onClick={props.deleteSetOfQuestions}>
-            DELETE
-        </button>
+        <ListItem
+            primaryText={props.name}
+            rightIcon={<Delete onClick={props.deleteSetOfQuestions} />}
+        />
     </div>
 )
 
