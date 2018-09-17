@@ -43,7 +43,7 @@ class DisplaySetOfQuestions extends React.Component {
 
     deleteSetOfQuestions = (id) => {
 
-        //database.ref(`/group-of-questions/${id}`).remove()
+        database.ref(`/group-of-questions/${id}`).remove()
         const newSet = this.state.sets.filter(set => id !== set.uid)
         this.setState({
             sets: newSet
