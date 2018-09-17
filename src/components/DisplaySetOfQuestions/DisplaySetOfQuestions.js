@@ -1,9 +1,8 @@
 import React from 'react'
 import Form from './Form'
-import { database } from '../firebaseConfig'
-import { mapObjectToArray } from '../utils'
+import { database } from '../../firebaseConfig'
 import ListOfSetsOfQuestions from './ListOfSetsOfQuestions'
-import Container from './Container'
+import Container from '../Container'
 
 class DisplaySetOfQuestions extends React.Component {
     state = {
@@ -42,8 +41,10 @@ class DisplaySetOfQuestions extends React.Component {
         })
     }
 
-    deleteSetOfQuestions = (setUid) => {
-        const newSet = this.state.sets.filter(set => setUid !== set.uid)
+    deleteSetOfQuestions = (id) => {
+
+        //database.ref(`/group-of-questions/${id}`).remove()
+        const newSet = this.state.sets.filter(set => id !== set.uid)
         this.setState({
             sets: newSet
         })

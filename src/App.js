@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom'
-import DisplaySetOfQuestions from './components/DisplaySetOfQuestions'
-import QuestionsToSet from './components/QuestionsToSet';
+import DisplaySetOfQuestions from './components/DisplaySetOfQuestions/DisplaySetOfQuestions'
+import QuestionsToSet from './components/QuestionsInSingleSet/QuestionsToSet';
 
 const App = () => (
       <div className="App">

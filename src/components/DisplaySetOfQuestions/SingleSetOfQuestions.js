@@ -1,7 +1,6 @@
 import React from 'react'
 import { ListItem } from 'material-ui/List'
 import Delete from 'material-ui/svg-icons/action/delete'
-import RaisedButton from 'material-ui/RaisedButton'
 import Avatar from 'material-ui/Avatar';
 import ActionAssignment from 'material-ui/svg-icons/action/assignment';
 import {blue500, yellow600} from 'material-ui/styles/colors';
