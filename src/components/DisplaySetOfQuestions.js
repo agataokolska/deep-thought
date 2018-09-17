@@ -37,18 +37,10 @@ class DisplaySetOfQuestions extends React.Component {
 
 
     addSetOfQuestions = () => {
-        const request = {
-            method: 'POST',
-            body: JSON.stringify({ name: this.state.setOfQuestionsName, uid: Date.now() })
-        }
-        fetch('https://questionnaire-app-5cd30.firebaseio.com/group-of-questions.json', request)
-            .then(response => {
-                this.setState({
-                    setOfQuestionsName: ''
-                })
-            })
+        database.ref('/group-of-questions').push({
+            name: this.state.setOfQuestionsName, uid: Date.now()
+        })
     }
-
 
     deleteSetOfQuestions = (setUid) => {
         const newSet = this.state.sets.filter(set => setUid !== set.uid)
@@ -64,7 +56,7 @@ class DisplaySetOfQuestions extends React.Component {
         })
     }
     render() {
-        const setId = this.props.match.params.uid
+
         return (
             <div>
                 <Container>

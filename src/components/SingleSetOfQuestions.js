@@ -11,7 +11,6 @@ const SingleSetOfQuestions = (props) => (
             primaryText={props.name}
             rightIcon={<Delete onClick={props.deleteSetOfQuestions} />}
             leftAvatar={<Avatar icon={<ActionAssignment />} backgroundColor={blue500} onClick={props.onSingleSetClick}/>}
-            // leftIcon={<RaisedButton secondary={true} label="Add questions" onClick={props.onSingleSetClick}/>}
         />
     </div>
 )
