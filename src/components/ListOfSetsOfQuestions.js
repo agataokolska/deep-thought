@@ -7,7 +7,8 @@ const ListOfSetsOfQuestions = (props) => (
             <SingleSetOfQuestions
                 name={set.name}
                 key={set.uid}
-                deleteSetOfQuestions={() => props.deleteSetOfQuestions(set.uid)}
+                deleteSetOfQuestions={() => props.deleteSetOfQuestions(set.uid)} 
+                onSingleSetClick={()=>props.onSingleSetClick(set.uid)}
             />
         ))
         }

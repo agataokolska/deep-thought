@@ -41,7 +41,14 @@ class DisplaySetOfQuestions extends React.Component {
         })
     }
 
+    onSingleSetClick = (setUid) => {
+        const newSet = this.state.sets.filter(set => setUid === set.uid)
+        this.setState({
+            sets: newSet
+        })
+    }
     render() {
+        const setId = this.props.match.params.uid
         return (
             <div>
                 <Container>
@@ -55,6 +62,7 @@ class DisplaySetOfQuestions extends React.Component {
                     <ListOfSetsOfQuestions
                         sets={this.state.sets}
                         deleteSetOfQuestions={this.deleteSetOfQuestions}
+                        onSingleSetClick={this.onSingleSetClick}
                     />
                 </Container>
             </div>
