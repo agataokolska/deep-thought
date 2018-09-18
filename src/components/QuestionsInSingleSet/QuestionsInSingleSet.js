@@ -36,11 +36,21 @@ class QuestionInSingleSet extends React.Component {
         database.ref(`/question`).push({
             name: this.state.questionName, uid: Date.now()
         })
+        this.setState({
+            questionName: ''
+        })
     }
 
     deleteQuestion = (id) => {
-
-        //database.ref(`/question/${id}`).remove()
+        const ref = database.ref(`/question/`);
+        ref
+            .orderByChild('uid')
+            .equalTo(id)
+            .once('value', snapshot => {
+                const updates = {};
+                snapshot.forEach(child => updates[child.key] = null);
+                ref.update(updates);
+            });
         const newQuestionList = this.state.questions.filter(question => id !== question.uid)
         this.setState({
             questions: newQuestionList

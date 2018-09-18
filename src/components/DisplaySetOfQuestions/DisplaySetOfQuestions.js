@@ -5,6 +5,7 @@ import ListOfSetsOfQuestions from './ListOfSetsOfQuestions'
 import Container from '../Container'
 
 class DisplaySetOfQuestions extends React.Component {
+
     state = {
         sets: [
             // { name: 'set one', uid: '1234' },
@@ -39,15 +40,28 @@ class DisplaySetOfQuestions extends React.Component {
         database.ref('/group-of-questions').push({
             name: this.state.setOfQuestionsName, uid: Date.now()
         })
+        this.setState({
+            setOfQuestionsName: ''
+        })
     }
 
-    deleteSetOfQuestions = (id) => {
 
-        database.ref(`/group-of-questions/${id}`).remove()
-        const newSet = this.state.sets.filter(set => id !== set.uid)
+    deleteSetOfQuestions = (id) => {
+        console.log("deleting: " + id);
+        const ref = database.ref(`/group-of-questions/`);
+        ref
+            .orderByChild('uid')
+            .equalTo(id)
+            .once('value', snapshot => {
+                const updates = {};
+                snapshot.forEach(child => updates[child.key] = null);
+                ref.update(updates);
+            });
+
+        const newSet = this.state.sets.filter(set => id !== set.uid);
         this.setState({
             sets: newSet
-        })
+        });
     }
 
     onSingleSetClick = (setUid) => {
@@ -56,8 +70,9 @@ class DisplaySetOfQuestions extends React.Component {
             sets: newSet
         })
     }
-    render() {
 
+
+    render() {
         return (
             <div>
                 <Container>
