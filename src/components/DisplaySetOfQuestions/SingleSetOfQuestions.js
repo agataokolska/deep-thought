@@ -12,7 +12,7 @@ const SingleSetOfQuestions = (props) => (
         <ListItem
             primaryText={
                 <Link
-                    to={`/group-of-questions/${props.q_id}`}
+                    to={`/set/${props.q_id}`}
                     style={{
                         textDecoration: 'none',
                         textAlign: 'center',

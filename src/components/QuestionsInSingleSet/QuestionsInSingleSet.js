@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import FormForQuestion from './FormForQuestion'
 import { database } from '../../firebaseConfig'
 import ListOfQuestions from './ListOfQuestions'
@@ -63,17 +64,46 @@ class QuestionInSingleSet extends React.Component {
         return (
             <div>
                 <Container>
+                    <h2>Add your open question</h2>
+                </Container>
+                <Container>
                     <FormForQuestion
                         onQuestionChange={this.onQuestionChange}
                         addQuestion={this.addQuestion}
                         questionName={this.state.questionName}
                     />
                 </Container>
+
+                {/* <Container>
+                <h2>Add your multiple choice question</h2>
+                </Container>
+                <Container>
+                    <FormForQuestion
+                        onQuestionChange={this.onQuestionChange}
+                        addQuestion={this.addQuestion}
+                        questionName={this.state.questionName}
+                    />
+
+                </Container> */}
                 <Container>
                     <ListOfQuestions
                         questions={this.state.questions}
                         deleteQuestion={this.deleteQuestion}
                     />
+                </Container>
+                <Container>
+                    <Link
+                        to={`/`}
+                        style={{
+                            textDecoration: 'none',
+                            textAlign: 'center',
+                            fontWeight: 'bold',
+                            color: 'black'
+                        }}
+                    >
+                        Go back to set of questions
+
+                </Link>
                 </Container>
             </div>
         )

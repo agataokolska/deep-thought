@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Form from './Form'
 import { database } from '../../firebaseConfig'
 import ListOfSetsOfQuestions from './ListOfSetsOfQuestions'
@@ -12,7 +13,9 @@ class DisplaySetOfQuestions extends React.Component {
             // { name: 'set two', uid: '2345' },
             // { name: 'set three', uid: '5678' }
         ],
-        setOfQuestionsName: ''
+        setOfQuestionsName: '',
+        isAddedToSet: false,
+        checked: false
     }
 
     componentWillMount() {
@@ -38,7 +41,7 @@ class DisplaySetOfQuestions extends React.Component {
 
     addSetOfQuestions = () => {
         database.ref('/group-of-questions').push({
-            name: this.state.setOfQuestionsName, uid: Date.now()
+            name: this.state.setOfQuestionsName, uid: Date.now(), isAddedToSet: false, isChecked: false
         })
         this.setState({
             setOfQuestionsName: ''
@@ -88,6 +91,20 @@ class DisplaySetOfQuestions extends React.Component {
                         deleteSetOfQuestions={this.deleteSetOfQuestions}
                         onSingleSetClick={this.onSingleSetClick}
                     />
+                </Container>
+                <Container>
+                    <Link
+                        to={`/questions`}
+                        style={{
+                            textDecoration: 'none',
+                            textAlign: 'center',
+                            fontWeight: 'bold',
+                            color: 'black'
+                        }}
+                    >
+                        Add your questions
+
+                </Link>
                 </Container>
             </div>
         )
